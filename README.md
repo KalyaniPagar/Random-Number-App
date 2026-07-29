@@ -1,16 +1,37 @@
-# React + Vite
+# Random Number App
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A small React + Vite app that renders three cards, each showing a random number
+between 1 and 100 and labelling it as "High" (> 50) or "Low".
 
-Currently, two official plugins are available:
+## Getting started
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+```bash
+npm install
+npm run dev
+```
 
-## React Compiler
+Then open the URL Vite prints (usually http://localhost:5173).
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+## Scripts
 
-## Expanding the ESLint configuration
+| Command           | Description                        |
+| ----------------- | ---------------------------------- |
+| `npm run dev`     | Start the dev server with HMR      |
+| `npm run build`   | Build for production into `dist/`  |
+| `npm run preview` | Preview the production build       |
+| `npm run lint`    | Run ESLint                         |
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+## Project structure
+
+```
+src/
+  main.jsx    App entry point
+  App.jsx     Generates the random numbers and renders the cards
+  Card.jsx    Displays one number and its High/Low label
+  App.css     Styles
+```
+
+## How it works
+
+`App.jsx` calls `Math.floor(Math.random() * 100) + 1` once per card and passes the
+value to `Card` as the `num` prop. New numbers are generated on every page reload.
